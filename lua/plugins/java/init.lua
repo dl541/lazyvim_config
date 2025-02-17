@@ -8,24 +8,29 @@ return {
         servers = {
           -- Your JDTLS configuration goes here
           jdtls = {
-            -- settings = {
-            --   java = {
-            --     configuration = {
-            --       runtimes = {
-            --         {
-            --           name = "JavaSE-23",
-            --           path = "/usr/local/sdkman/candidates/java/23-tem",
-            --         },
-            --       },
-            --     },
-            --   },
-            -- },
+            settings = {
+              java = {
+                configuration = {
+                  runtimes = {
+                    {
+                      name = "sdkman-managed-java-sdk",
+                      path = "~/.sdkman/candidates/java/current/",
+                    },
+                  },
+                },
+              },
+            },
           },
         },
         setup = {
           jdtls = function()
             -- Your nvim-java configuration goes here
             require("java").setup({
+              configuration = {
+                jdk = {
+                  auto_install = false,
+                },
+              },
               -- root_markers = {
               --   "settings.gradle",
               --   "settings.gradle.kts",
